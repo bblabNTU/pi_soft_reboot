@@ -1,6 +1,6 @@
 # pi_soft_reboot
 
-To shutdown or reboot Raspberry Pi (4 in my case) by a momentary power switch, so you won't damage your SD card when unplugging the power supply
+To shutdown or reboot Raspberry Pi (4 in my case) by a momentary power switch, so you don't need to unplug the cord which might damage your SD card
 
 ## Table of Contents
 
@@ -8,8 +8,7 @@ To shutdown or reboot Raspberry Pi (4 in my case) by a momentary power switch, s
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Reference](#reference)
 
 ## Introduction
 
@@ -30,6 +29,36 @@ To wake Pi up from "halt", easily short GPIO3(PIN5) and GND(PIN6). However, in m
 
 ## Installation
 
-1. Clone the repository:
+1. Wiring
+
+&emsp; Pick a GPIO PIN (GPIO 13 for example)
+
+&emsp; Connection: GPIO13 &mdash; power switch &mdash; GND
+
+2. Clone the repository:
 ```git clone https://github.com/bblabNTU/pi_soft_reboot.git```
 
+## Usage
+
+1. 
+```
+sudo mv listen-for-shutdown.py /usr/local/bin/
+sudo chmod +x /usr/local/bin/listen-for-shutdown.py
+```
+2. 
+```
+sudo mv listen-for-shutdown.sh /etc/init.d/
+sudo chmod +x /etc/init.d/listen-for-shutdown.sh
+```
+3.
+```
+sudo update-rc.d listen-for-shutdown.sh defaults
+```
+4. 
+```
+sudo /etc/init.d/listen-for-shutdown.sh start
+```
+## Reference
+
+1. https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
+2. rather than ```init.d```, you can use [systemctl](https://segmentfault.com/a/1190000038458363)
