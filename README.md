@@ -23,8 +23,8 @@ To wake Pi up from "halt", easily short GPIO3(PIN5) and GND(PIN6). However, in m
 ## Features
 
 - Hardware Wiring
-- Soft reboot functionality 
-- Soft shutdown functionality
+- Soft reboot by short press the power switch 
+- Soft shutdown by long press the power switch
 - register the script to run on boot
 
 ## Installation
