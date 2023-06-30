@@ -40,25 +40,31 @@ To wake Pi up from "halt", easily short GPIO3(PIN5) and GND(PIN6). However, in m
 
 ## Usage
 
-1. 
+1. Modify listen-for-shutdown.service on Line:7 :
 ```
-sudo mv listen-for-shutdown.py /usr/local/bin/
-sudo chmod +x /usr/local/bin/listen-for-shutdown.py
+ExecStart=/usr/bin/python3 <.py location>/listen-for-shutdown.py
 ```
 2. 
 ```
-sudo mv listen-for-shutdown.sh /etc/init.d/
-sudo chmod +x /etc/init.d/listen-for-shutdown.sh
+sudo mv listen-for-shutdown.service /lib/systemd/system/listen-for-shutdown.service
 ```
+
 3.
 ```
-sudo update-rc.d listen-for-shutdown.sh defaults
+sudo chmod 644 /lib/systemd/system/listen-for-shutdown.service
 ```
 4. 
 ```
-sudo /etc/init.d/listen-for-shutdown.sh start
+sudo systemctl daemon-reload
+sudo systemctl enable listen-for-shutdown.service
+```
+5.
+```
+sudo reboot
 ```
 ## Reference
 
-1. https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
-2. rather than ```init.d```, you can use [systemctl](https://segmentfault.com/a/1190000038458363)
+
+1. https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/#crontab
+2. https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
+3. [systemctl](https://segmentfault.com/a/1190000038458363)
