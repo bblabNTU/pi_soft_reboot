@@ -38,6 +38,13 @@ To wake Pi up from "halt", easily short GPIO3(PIN5) and GND(PIN6). However, in m
 2. Clone the repository:
 ```git clone https://github.com/bblabNTU/pi_soft_reboot.git```
 
+## Prerequirement
+
+* If you install ubuntu on rpi:
+  ```
+  sudo apt-get install python3-rpi.gpio
+  ```
+
 ## Usage
 
 1. Modify listen-for-shutdown.service on Line:7 :
