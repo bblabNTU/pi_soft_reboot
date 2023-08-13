@@ -3,7 +3,7 @@ Description=listen power switch to shutdown
 After=multi-user.target
 
 [Service]
-Typr=idle
+Type=idle
 ExecStart=/usr/bin/python3 /home/ubuntu/pi_soft_reboot/listen-for-shutdown.py
 
 [Install]
